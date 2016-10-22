@@ -5,6 +5,7 @@ public class FindClassName extends InformationFinder
 {
 	Class cl;
 	Object ob;
+	String[] interfaceNames;
 	
 	public FindClassName(Class cl, Object ob)
 	{
@@ -19,9 +20,22 @@ public class FindClassName extends InformationFinder
 		this.cl.getName();
 	}
 
+	public String getClName()
+	{
+		return this.cl.getName();
+	}
 
-
-	private Class getCl()
+	public String[] getClInterfaceName()
+	{
+		interfaceNames = new String[this.cl.getInterfaces().length];
+		for(int i = 0; i < this.cl.getInterfaces().length; i++)
+		{
+			interfaceNames[i] = this.cl.getInterfaces()[i].getName();
+		}
+		return interfaceNames;
+	}
+	
+	public Class getCl()
 	{
 		return this.cl;
 	}
