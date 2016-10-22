@@ -27,7 +27,7 @@ class TestClass2 implements InterfaceA {
 		// TODO Auto-generated method stub
 		return 0;
 	}}
-class TestClass3{}
+class TestClass3 extends TestClass1{}
 
 
 public class TestFindClassName 
@@ -47,4 +47,14 @@ public class TestFindClassName
 		FindClassName name = new FindClassName(cl,null);
 		assertArrayEquals(new String[]{"asst2_test_driver.InterfaceA"},name.getClInterfaceName());
 	}
+	
+	@Test
+	public void testTestClass3() throws ReflectiveOperationException
+	{
+		Class cl = Class.forName("testReflectiveObjectInspector.TestClass3");
+		FindClassName name = new FindClassName(cl,null);
+		assertEquals("testReflectiveObjectInspector.TestClass1", name.getClSuperclassName());
+	}
+	
+	
 }

@@ -35,6 +35,11 @@ public class FindClassName extends InformationFinder
 		return interfaceNames;
 	}
 	
+	public String getClSuperclassName()
+	{
+		return this.cl.getSuperclass().getName();
+	}
+	
 	public Class getCl()
 	{
 		return this.cl;
