@@ -37,7 +37,7 @@ public class TestFindClassName
 	{
 		Class cl = Class.forName("testReflectiveObjectInspector.TestClass1");
 		FindClassName name = new FindClassName(cl, null);
-		assertEquals("testReflectiveObjectInspector.TestClass1",name.getClName());
+		assertEquals("testReflectiveObjectInspector.TestClass1",name.getClassName());
 	}
 	
 	@Test
@@ -45,7 +45,7 @@ public class TestFindClassName
 	{
 		Class cl = Class.forName("testReflectiveObjectInspector.TestClass2");
 		FindClassName name = new FindClassName(cl,null);
-		assertArrayEquals(new String[]{"asst2_test_driver.InterfaceA"},name.getClInterfaceName());
+		assertArrayEquals(new String[]{"asst2_test_driver.InterfaceA"},name.getClassInterfaceName());
 	}
 	
 	@Test
@@ -53,7 +53,7 @@ public class TestFindClassName
 	{
 		Class cl = Class.forName("testReflectiveObjectInspector.TestClass3");
 		FindClassName name = new FindClassName(cl,null);
-		assertEquals("testReflectiveObjectInspector.TestClass1", name.getClSuperclassName());
+		assertEquals("testReflectiveObjectInspector.TestClass1", name.getSuperclassName());
 	}
 	
 	

@@ -20,12 +20,12 @@ public class FindClassName extends InformationFinder
 		this.cl.getName();
 	}
 
-	public String getClName()
+	public String getClassName()
 	{
 		return this.cl.getName();
 	}
 
-	public String[] getClInterfaceName()
+	public String[] getClassInterfaceName()
 	{
 		interfaceNames = new String[this.cl.getInterfaces().length];
 		for(int i = 0; i < this.cl.getInterfaces().length; i++)
@@ -35,7 +35,7 @@ public class FindClassName extends InformationFinder
 		return interfaceNames;
 	}
 	
-	public String getClSuperclassName()
+	public String getSuperclassName()
 	{
 		return this.cl.getSuperclass().getName();
 	}
