@@ -29,6 +29,28 @@ public class FindMethodName extends InformationFinder
 		setOb(ob);
 	}
 	
+	public String[] getMethods()
+	{
+		String[] methods = new String[this.ob.getClass().getDeclaredMethods().length];
+		for(int i = 0; i < this.ob.getClass().getDeclaredMethods().length; i++)
+		{
+			methods[i] = this.ob.getClass().getDeclaredMethods()[i].toString();
+			System.out.println(methods[i]);
+		}
+		return methods;
+	}
+	
+	public String[] getMethods2()
+	{
+		String[] methods = new String[this.cl.getDeclaredMethods().length];
+		for(int i = 0; i < this.cl.getMethods().length; i++)
+		{
+			methods[i] = this.cl.getDeclaredMethods()[i].toString();
+			System.out.println(methods[i]);
+		}
+		return methods;
+	}
+	
 	@Override
 	public void getInformation() {
 		// TODO Auto-generated method stub
