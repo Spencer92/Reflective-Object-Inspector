@@ -1,5 +1,6 @@
 package reflectiveObjectInspector;
 import java.lang.reflect.*;
+import testReflectiveObjectInspector.*;
 
 public class FindMethodName extends InformationFinder
 {
@@ -38,13 +39,20 @@ public class FindMethodName extends InformationFinder
 	public String[] getConstructors() throws NoSuchMethodException, SecurityException
 	{
 		Class<?> parameterTypes = null;
-		String[] constructors = new String[this.ob.getClass().getConstructors().length];
-		for(int i = 0; i < this.ob.getClass().getConstructors().length; i++)
+		String[] constructors = new String[this.ob.getClass().getDeclaredConstructors().length];
+		for(int i = 0; i < this.ob.getClass().getDeclaredConstructors().length; i++)
 		{
-			constructors[i] = this.ob.getClass().getConstructors()[i].getName();
+			constructors[i] = this.ob.getClass().getDeclaredConstructors()[i].getName();
 			System.out.println(constructors[i]);
 		}
 		return constructors;
+	}
+	
+	public String getConstructors2() throws NoSuchMethodException, SecurityException, ClassNotFoundException
+	{
+		Class<?> parameterTypes = Class.forName("testReflectiveObjectInspector.TestClass1");
+		String constructor = this.ob.getClass().getDeclaredConstructor(parameterTypes).getName();
+		return constructor;
 	}
 
 	public Class getCl() {

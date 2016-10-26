@@ -9,7 +9,9 @@ public class ReflectiveObjectInspector
 	{
 		Object ob = Class.forName("testReflectiveObjectInspector.TestMethod1");
 		Class cl = Class.forName("testReflectiveObjectInspector.TestMethod1");
-		FindMethodName name = new FindMethodName(null, ob);
-		name.getConstructors();
+		FindMethodName name = new FindMethodName(null, cl);
+//		name.getMethods();
+//		name.getMethods2();
+		name.getConstructors2();
 	}
 }
