@@ -10,6 +10,12 @@ import reflectiveObjectInspector.*;
 
 class TestMethod1
 {
+	public TestMethod1(int j, int k)
+	{
+		int i = 7;
+		System.out.println(i);
+	}
+	
 	public String m1()
 	{
 		return "m1";

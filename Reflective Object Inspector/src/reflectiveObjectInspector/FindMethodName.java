@@ -6,28 +6,12 @@ public class FindMethodName extends InformationFinder
 	private Class cl;
 	private Object ob;
 	
-	
-	public Class getCl() {
-		return cl;
-	}
+	@Override
+	public void getInformation() {
+		// TODO Auto-generated method stub
+		
+	}	
 
-	public void setCl(Class cl) {
-		this.cl = cl;
-	}
-
-	public Object getOb() {
-		return ob;
-	}
-
-	public void setOb(Object ob) {
-		this.ob = ob;
-	}
-
-	public FindMethodName(Class cl, Object ob)
-	{
-		setCl(cl);
-		setOb(ob);
-	}
 	
 	public String[] getMethods()
 	{
@@ -51,10 +35,37 @@ public class FindMethodName extends InformationFinder
 		return methods;
 	}
 	
-	@Override
-	public void getInformation() {
-		// TODO Auto-generated method stub
-		
+	public String[] getConstructors() throws NoSuchMethodException, SecurityException
+	{
+		Class<?> parameterTypes = null;
+		String[] constructors = new String[this.ob.getClass().getConstructors().length];
+		for(int i = 0; i < this.ob.getClass().getConstructors().length; i++)
+		{
+			constructors[i] = this.ob.getClass().getConstructors()[i].getName();
+			System.out.println(constructors[i]);
+		}
+		return constructors;
 	}
 
+	public Class getCl() {
+		return cl;
+	}
+
+	public void setCl(Class cl) {
+		this.cl = cl;
+	}
+
+	public Object getOb() {
+		return ob;
+	}
+
+	public void setOb(Object ob) {
+		this.ob = ob;
+	}
+
+	public FindMethodName(Class cl, Object ob)
+	{
+		setCl(cl);
+		setOb(ob);
+	}
 }
