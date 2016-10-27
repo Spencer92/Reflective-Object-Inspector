@@ -38,14 +38,20 @@ public class FindMethodName extends InformationFinder
 	
 	public String[] getConstructors() throws NoSuchMethodException, SecurityException
 	{
-		Class<?> parameterTypes = null;
-		String[] constructors = new String[this.ob.getClass().getDeclaredConstructors().length];
-		for(int i = 0; i < this.ob.getClass().getDeclaredConstructors().length; i++)
+		Class<?> parameterTypes = (Class<?>) ob;
+		String[] constructors = new String[parameterTypes.getDeclaredMethods().length];
+		for(int i = 0; i < parameterTypes.getDeclaredMethods().length; i++)
 		{
-			constructors[i] = this.ob.getClass().getDeclaredConstructors()[i].getName();
+			constructors[i] = parameterTypes.getDeclaredMethods()[i].getName();
 			System.out.println(constructors[i]);
 		}
 		return constructors;
+	}
+	
+	public String getConstructors3() throws NoSuchMethodException, SecurityException
+	{
+		Constructor<?> parameter = this.ob.getClass().getDeclaredConstructor(this.ob.getClass());
+		return parameter.getName();
 	}
 	
 	public String getConstructors2() throws NoSuchMethodException, SecurityException, ClassNotFoundException
