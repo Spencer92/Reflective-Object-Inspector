@@ -13,54 +13,38 @@ public class FindMethodName extends InformationFinder
 		
 	}	
 
+	public FindMethodName(Class cl, Object ob)
+	{
+		setCl(cl);
+		setOb(ob);
+	}
 	
 	public String[] getMethods()
 	{
-		String[] methods = new String[this.ob.getClass().getDeclaredMethods().length];
-		for(int i = 0; i < this.ob.getClass().getDeclaredMethods().length; i++)
+		Class<?> classObject = (Class<?>) this.ob;
+		String[] methods = new String[classObject.getMethods().length];
+		for(int i = 0; i < classObject.getMethods().length; i++)
 		{
-			methods[i] = this.ob.getClass().getDeclaredMethods()[i].toString();
+			methods[i] = classObject.getMethods()[i].toString();
 			System.out.println(methods[i]);
 		}
 		return methods;
 	}
 	
-	public String[] getMethods2()
-	{
-		String[] methods = new String[this.cl.getDeclaredMethods().length];
-		for(int i = 0; i < this.cl.getMethods().length; i++)
-		{
-			methods[i] = this.cl.getDeclaredMethods()[i].toString();
-			System.out.println(methods[i]);
-		}
-		return methods;
-	}
 	
 	public String[] getConstructors() throws NoSuchMethodException, SecurityException
 	{
 		Class<?> parameterTypes = (Class<?>) ob;
-		String[] constructors = new String[parameterTypes.getDeclaredMethods().length];
-		for(int i = 0; i < parameterTypes.getDeclaredMethods().length; i++)
+		String[] constructors = new String[parameterTypes.getConstructors().length];
+		for(int i = 0; i < parameterTypes.getConstructors().length; i++)
 		{
-			constructors[i] = parameterTypes.getDeclaredMethods()[i].getName();
+			constructors[i] = parameterTypes.getConstructors()[i].getName();
 			System.out.println(constructors[i]);
 		}
 		return constructors;
 	}
 	
-	public String getConstructors3() throws NoSuchMethodException, SecurityException
-	{
-		Constructor<?> parameter = this.ob.getClass().getDeclaredConstructor(this.ob.getClass());
-		return parameter.getName();
-	}
 	
-	public String getConstructors2() throws NoSuchMethodException, SecurityException, ClassNotFoundException
-	{
-		Class<?> parameterTypes = Class.forName("testReflectiveObjectInspector.TestClass1");
-		String constructor = this.ob.getClass().getDeclaredConstructor(parameterTypes).getName();
-		return constructor;
-	}
-
 	public Class getCl() {
 		return cl;
 	}
@@ -77,9 +61,5 @@ public class FindMethodName extends InformationFinder
 		this.ob = ob;
 	}
 
-	public FindMethodName(Class cl, Object ob)
-	{
-		setCl(cl);
-		setOb(ob);
-	}
+
 }

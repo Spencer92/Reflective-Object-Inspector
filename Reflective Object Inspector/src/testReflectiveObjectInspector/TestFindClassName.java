@@ -36,7 +36,8 @@ public class TestFindClassName
 	public void testTestClass1() throws ReflectiveOperationException
 	{
 		Class cl = Class.forName("testReflectiveObjectInspector.TestClass1");
-		FindClassName name = new FindClassName(cl, null);
+		Object ob = Class.forName("testReflectiveObjectInspector.TestClass1");
+		FindClassName name = new FindClassName(cl, ob);
 		assertEquals("testReflectiveObjectInspector.TestClass1",name.getClassName());
 	}
 	
