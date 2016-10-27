@@ -27,10 +27,12 @@ public class FindClassName extends InformationFinder
 
 	public String[] getClassInterfaceName()
 	{
-		interfaceNames = new String[this.cl.getInterfaces().length];
-		for(int i = 0; i < this.cl.getInterfaces().length; i++)
+		Class<?> objectClass = (Class<?>) this.ob;
+		System.out.println(objectClass.getInterfaces());
+		String[] interfaceNames = new String[objectClass.getInterfaces().length];
+		for(int i = 0; i < objectClass.getInterfaces().length; i++)
 		{
-			interfaceNames[i] = this.cl.getInterfaces()[i].getName();
+			interfaceNames[i] = objectClass.getInterfaces()[i].getName();
 		}
 		return interfaceNames;
 	}

@@ -44,7 +44,8 @@ public class TestFindClassName
 	public void testTestClass2() throws ReflectiveOperationException
 	{
 		Class cl = Class.forName("testReflectiveObjectInspector.TestClass2");
-		FindClassName name = new FindClassName(cl,null);
+		Object ob = Class.forName("testReflectiveObjectInspector.TestClass2");
+		FindClassName name = new FindClassName(cl,ob);
 		assertArrayEquals(new String[]{"asst2_test_driver.InterfaceA"},name.getClassInterfaceName());
 	}
 	
@@ -52,7 +53,8 @@ public class TestFindClassName
 	public void testTestClass3() throws ReflectiveOperationException
 	{
 		Class cl = Class.forName("testReflectiveObjectInspector.TestClass3");
-		FindClassName name = new FindClassName(cl,null);
+		Object ob = Class.forName("testReflectiveObjectInspector.TestClass3");
+		FindClassName name = new FindClassName(cl,ob);
 		assertEquals("testReflectiveObjectInspector.TestClass1", name.getSuperclassName());
 	}
 	
