@@ -6,6 +6,11 @@ public class FindMethodName extends InformationFinder
 {
 	private Class cl;
 	private Object ob;
+	private String[] getExceptions;
+	private String[] getParameterTypes;
+	private String[] getReturnTypes;
+	
+	
 	
 	@Override
 	public void getInformation() {
@@ -25,7 +30,7 @@ public class FindMethodName extends InformationFinder
 		String[] methods = new String[classObject.getMethods().length];
 		for(int i = 0; i < classObject.getMethods().length; i++)
 		{
-			methods[i] = classObject.getMethods()[i].toString();
+			methods[i] = classObject.getMethods()[i].getParameterTypes()[i].getName();
 			System.out.println(methods[i]);
 		}
 		return methods;
