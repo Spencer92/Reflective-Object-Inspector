@@ -51,7 +51,7 @@ class TestMethod3 extends TestClass1{}
 
 
 
-public class TestFindMethodName 
+public class TestMethodInformation 
 {
 	@Test
 	public void testTestMethod1() throws ClassNotFoundException
