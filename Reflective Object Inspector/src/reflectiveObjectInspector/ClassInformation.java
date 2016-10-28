@@ -1,13 +1,13 @@
 package reflectiveObjectInspector;
 import java.lang.reflect.*;
 
-public class FindClassName extends InformationFinder
+public class ClassInformation extends InformationFinder
 {
 	Class cl;
 	Object ob;
 	String[] interfaceNames;
 	
-	public FindClassName(Class cl, Object ob)
+	public ClassInformation(Class cl, Object ob)
 	{
 		setCl(cl);
 		setOb(ob);
@@ -26,7 +26,7 @@ public class FindClassName extends InformationFinder
 		return objectClass.getName();
 	}
 
-	public String[] getClassInterfaceName()
+	public void getClassInterfaceName()
 	{
 		Class<?> objectClass = (Class<?>) this.ob;
 		System.out.println(objectClass.getInterfaces());
@@ -35,7 +35,6 @@ public class FindClassName extends InformationFinder
 		{
 			interfaceNames[i] = objectClass.getInterfaces()[i].getName();
 		}
-		return interfaceNames;
 	}
 	
 	

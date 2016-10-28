@@ -11,6 +11,7 @@ public class MethodInformation
 	private String modifiers;
 	private String name;
 	private String[] fields = null;
+	private String[] fieldModifiers = null;
 	
 
 
@@ -52,10 +53,11 @@ public class MethodInformation
 		if(fields != null)
 		{
 			System.out.print("Fields: " + fields[0]);
-			for(int i = 0; i < fields.length; i++)
+			for(int i = 1; i < fields.length; i++)
 			{
-				System.out.print(", " + fields[i]);
+				System.out.print(", " + fieldModifiers[i] + " " + fields[i]);
 			}
+			System.out.println();
 		}
 		System.out.println();
 	}
@@ -105,15 +107,18 @@ public class MethodInformation
 		if(fields.length > 0)
 		{
 			this.fields = new String[fields.length];
+			this.fieldModifiers = new String[fields.length];
 			for(int i = 0; i < fields.length; i++)
 			{
 				if(fields[i].isAccessible())
 				{
 					this.fields[i] = "Accessible " + fields[i].getName();
+					this.fieldModifiers[i] = Integer.toString(fields[i].getModifiers());
 				}
 				else
 				{
 					this.fields[i] = "inaccessible " + fields[i].getName();
+					this.fieldModifiers[i] = Integer.toString(fields[i].getModifiers());
 				}
 			}
 		}

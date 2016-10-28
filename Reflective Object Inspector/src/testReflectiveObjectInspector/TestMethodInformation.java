@@ -10,6 +10,10 @@ import reflectiveObjectInspector.*;
 
 class TestMethod1
 {
+	public int f1;
+	static int f2;
+	protected int f3;
+	final int f4 = 0;
 	public TestMethod1(int j, int k)
 	{
 		int i = 7;
@@ -71,6 +75,7 @@ public class TestMethodInformation
 			info[i].setParameters(objectClass.getMethods()[i].getParameterTypes());
 			info[i].setModifiers(objectClass.getModifiers());
 			info[i].setReturnType(objectClass.getMethods()[i].getReturnType());
+			info[i].setFields(objectClass.getFields());
 			info[i].print();
 		}
 		
