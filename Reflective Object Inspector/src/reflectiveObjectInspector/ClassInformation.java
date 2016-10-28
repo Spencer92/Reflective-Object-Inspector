@@ -1,7 +1,7 @@
 package reflectiveObjectInspector;
 import java.lang.reflect.*;
 
-public class ClassInformation extends InformationFinder
+public class ClassInformation
 {
 	Class objectClass;
 	Object ob;
@@ -14,12 +14,6 @@ public class ClassInformation extends InformationFinder
 		setOb(ob);
 	}
 	
-	@Override
-	public void getInformation() 
-	{
-
-		this.objectClass.getName();
-	}
 
 	public String getClassName()
 	{

@@ -2,7 +2,7 @@ package reflectiveObjectInspector;
 import java.lang.reflect.*;
 import testReflectiveObjectInspector.*;
 
-public class FindMethodName extends InformationFinder
+public class FindMethodName
 {
 	private Class cl;
 	private Object ob;
@@ -11,12 +11,7 @@ public class FindMethodName extends InformationFinder
 	private String[] getReturnTypes;
 	
 	
-	
-	@Override
-	public void getInformation() {
-		// TODO Auto-generated method stub
-		
-	}	
+
 
 	public FindMethodName(Class cl, Object ob)
 	{
