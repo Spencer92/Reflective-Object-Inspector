@@ -18,17 +18,5 @@ public class ReflectiveObjectInspector
 		
 		inspector.inspect(ob,true);
 		
-//		System.out.println(c2.getClass().getName().toString());
-//		System.out.println(ob2);
-//		FindMethodName name = new FindMethodName(null, ob);
-//		FindClassName name2 = new FindClassName(cl,ob2);
-//		name.getMethods();
-//		name.getMethods2();
-//		name.getConstructors();
-//		name.getMethods();
-//		System.out.println(name.getConstructors3());
-//		name.getConstructors();
-//		name2.getClassInterfaceName3();
-		
 	}
 }

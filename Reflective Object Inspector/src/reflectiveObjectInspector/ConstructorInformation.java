@@ -8,6 +8,15 @@ public class ConstructorInformation
 	private String modifiers;
 	private String name;
 	
+
+	/*
+	 * Class Name	:		print
+	 * 
+	 * Purpose   	:		Prints out the constructor, the paramters if they exist, and the modifiers
+	 * 
+	 * 
+	 */	
+	
 	public void print()
 	{
 		System.out.println("Constructor name: " + name);
@@ -29,6 +38,12 @@ public class ConstructorInformation
 		System.out.println("Modifiers: " + modifiers);
 	}
 	
+	
+	
+	
+	//Getters and setters
+	
+	
 	public String[] getParameterTypes() {
 		return parameterTypes;
 	}
@@ -43,6 +58,9 @@ public class ConstructorInformation
 			}
 		}
 	}
+	
+	
+	
 	public String getModifiers() {
 		return modifiers;
 	}

@@ -10,10 +10,16 @@ public class MethodInformation
 	private String returnType;
 	private String modifiers;
 	private String name;
-	private String[] fields = null;
-	private String[] fieldModifiers = null;
-	
 
+	
+	/*
+	 * Class Name	:		print
+	 * 
+	 * Purpose   	:		Print out the method name, return type, and modifiers.
+	 * 						If there are parameters or exceptions thrown, then those
+	 * 						are displayed as well.
+	 * 
+	 */	
 
 
 	public void print()
@@ -50,15 +56,6 @@ public class MethodInformation
 			System.out.println("Parameters: none");
 		}
 		
-		if(fields != null)
-		{
-			System.out.print("Fields: " + fields[0]);
-			for(int i = 1; i < fields.length; i++)
-			{
-				System.out.print(", " + fieldModifiers[i] + " " + fields[i]);
-			}
-			System.out.println();
-		}
 		System.out.println();
 	}
 	

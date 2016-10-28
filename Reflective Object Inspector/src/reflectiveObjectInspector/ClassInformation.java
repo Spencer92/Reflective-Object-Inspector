@@ -1,3 +1,4 @@
+
 package reflectiveObjectInspector;
 import java.lang.reflect.*;
 
@@ -13,47 +14,16 @@ public class ClassInformation
 	{
 		setOb(ob);
 	}
+
+	/*
+	 * Class Name	:		setFields
+	 * 
+	 * Purpose   	:		Takes any public fields, and converts the name to a string
+	 * 						to be displayed
+	 * 
+	 * 
+	 */	
 	
-
-	public String getClassName()
-	{
-		objectClass = (Class<?>) this.ob;
-		return objectClass.getName();
-	}
-
-	public Class<?>[] getClassInterfaces()
-	{
-		objectClass = (Class<?>) this.ob;
-		System.out.println(objectClass.getInterfaces());
-		String[] interfaceNames = new String[objectClass.getInterfaces().length];
-///		for(int i = 0; i < objectClass.getInterfaces().length; i++)
-//		{
-//			interfaceNames[i] = objectClass.getInterfaces()[i].getName();
-//		}
-		return objectClass.getInterfaces();
-	}
-	
-	
-	public void printFields()
-	{
-		if(fields != null)
-		{
-			System.out.print("Fields: " + fields[0]);
-			for(int i = 1; i < fields.length; i++)
-			{
-				System.out.print(", " + fieldModifiers[i] + " " + fields[i]);
-			}
-			System.out.println();
-		}
-		System.out.println();
-	}
-
-	
-	public String[] getFields() {
-		return fields;
-	}
-
-
 	public void setFields(Field[] fields) {
 		if(fields.length > 0)
 		{
@@ -73,6 +43,48 @@ public class ClassInformation
 				}
 			}
 		}
+	}
+	
+	/*
+	 * Class Name	:		printFields
+	 * 
+	 * Purpose   	:		Prints the field and the number of modifiers associated with it.
+	 * 
+	 * 
+	 */	
+	
+	public void printFields()
+	{
+		if(fields != null)
+		{
+			System.out.print("Fields: " + fields[0]);
+			for(int i = 1; i < fields.length; i++)
+			{
+				System.out.print(", " + fieldModifiers[i] + " " + fields[i]);
+			}
+			System.out.println();
+		}
+		System.out.println();
+	}
+	
+	
+	//getters and setters
+	
+	public String getClassName()
+	{
+		objectClass = (Class<?>) this.ob;
+		return objectClass.getName();
+	}
+
+	public Class<?>[] getClassInterfaces()
+	{
+		objectClass = (Class<?>) this.ob;
+		return objectClass.getInterfaces();
+	}
+	
+	
+	public String[] getFields() {
+		return fields;
 	}
 
 	
