@@ -7,16 +7,17 @@ public class ReflectiveObjectInspector
 {
 	public static void main(String [] args) throws ClassNotFoundException, NoSuchMethodException, SecurityException
 	{
-		Object ob = Class.forName("testReflectiveObjectInspector.TestMethod1");
-		Class cl = Class.forName("testReflectiveObjectInspector.TestMethod1");
-		Object ob3 = Class.forName("asst2_test_driver.ClassA");
-		Object ob4 = Class.forName("asst2_test_driver.ObjectInspector");
-		Class<?>c2;
-		Object ob2 = cl;
-		c2 = (Class<?>) ob2;
+		Object object1 = Class.forName("asst2_test_driver.ClassA");
+		Object object2 = Class.forName("asst2_test_driver.ClassB");
+		Object object3 = Class.forName("asst2_test_driver.ClassC");
+		Object object4 = Class.forName("asst2_test_driver.ClassD");
 		Inspector inspector = new Inspector();
 		
-		inspector.inspect(ob,true);
+		inspector.inspect(object1, true);
+		inspector.inspect(object2, true);
+		inspector.inspect(object3, true);
+		inspector.inspect(object4, true);
+		
 		
 	}
 }
