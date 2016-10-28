@@ -75,7 +75,6 @@ public class TestMethodInformation
 			info[i].setParameters(objectClass.getMethods()[i].getParameterTypes());
 			info[i].setModifiers(objectClass.getModifiers());
 			info[i].setReturnType(objectClass.getMethods()[i].getReturnType());
-			info[i].setFields(objectClass.getFields());
 			info[i].print();
 		}
 		

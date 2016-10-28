@@ -98,7 +98,7 @@ public class MethodInformation
 
 	}
 	
-	public String[] getFields() {
+/*	public String[] getFields() {
 		return fields;
 	}
 
@@ -123,7 +123,7 @@ public class MethodInformation
 			}
 		}
 	}
-	
+*/	
 	public String getReturnType() {
 		return returnType;
 	}

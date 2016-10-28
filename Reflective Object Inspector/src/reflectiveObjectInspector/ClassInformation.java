@@ -6,6 +6,8 @@ public class ClassInformation extends InformationFinder
 	Class objectClass;
 	Object ob;
 	String[] interfaceNames;
+	String[] fields;
+	String[] fieldModifiers;
 	
 	public ClassInformation(Object ob)
 	{
@@ -37,7 +39,32 @@ public class ClassInformation extends InformationFinder
 		return objectClass.getInterfaces();
 	}
 	
-	
+	public String[] getFields() {
+		return fields;
+	}
+
+
+	public void setFields(Field[] fields) {
+		if(fields.length > 0)
+		{
+			this.fields = new String[fields.length];
+			this.fieldModifiers = new String[fields.length];
+			for(int i = 0; i < fields.length; i++)
+			{
+				if(fields[i].isAccessible())
+				{
+					this.fields[i] = "Accessible " + fields[i].getName();
+					this.fieldModifiers[i] = Integer.toString(fields[i].getModifiers());
+				}
+				else
+				{
+					this.fields[i] = "inaccessible " + fields[i].getName();
+					this.fieldModifiers[i] = Integer.toString(fields[i].getModifiers());
+				}
+			}
+		}
+	}
+
 	
 	public Class<?> getSuperclass()
 	{
