@@ -24,16 +24,18 @@ public class FindMethodName extends InformationFinder
 		setOb(ob);
 	}
 	
-	public String[] getMethods()
+	public MethodInformation getMethods()
 	{
 		Class<?> classObject = (Class<?>) this.ob;
+		MethodInformation[] info = new MethodInformation[classObject.getMethods().length];
 		String[] methods = new String[classObject.getMethods().length];
+		classObject.getMethods();
 		for(int i = 0; i < classObject.getMethods().length; i++)
 		{
 			methods[i] = classObject.getMethods()[i].getParameterTypes()[i].getName();
 			System.out.println(methods[i]);
 		}
-		return methods;
+		return null;
 	}
 	
 	
