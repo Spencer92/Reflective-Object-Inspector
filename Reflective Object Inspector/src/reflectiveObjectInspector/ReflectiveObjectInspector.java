@@ -16,7 +16,7 @@ public class ReflectiveObjectInspector
 		c2 = (Class<?>) ob2;
 		Inspector inspector = new Inspector();
 		
-		inspector.inspect(ob4,true);
+		inspector.inspect(ob,true);
 		
 //		System.out.println(c2.getClass().getName().toString());
 //		System.out.println(ob2);
