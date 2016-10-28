@@ -9,6 +9,7 @@ public class Inspector
 	public void inspect(Object obj, boolean recursive)
 	{
 		Class<?> objectClass;
+		
 		objectClass = (Class<?>) obj;
 		if(!saved.contains(objectClass.toString()))
 		{

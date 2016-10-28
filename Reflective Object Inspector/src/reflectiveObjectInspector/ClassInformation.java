@@ -6,8 +6,8 @@ public class ClassInformation extends InformationFinder
 	Class objectClass;
 	Object ob;
 	String[] interfaceNames;
-	String[] fields;
-	String[] fieldModifiers;
+	String[] fields = null;
+	String[] fieldModifiers = null;
 	
 	public ClassInformation(Object ob)
 	{
@@ -38,6 +38,22 @@ public class ClassInformation extends InformationFinder
 //		}
 		return objectClass.getInterfaces();
 	}
+	
+	
+	public void printFields()
+	{
+		if(fields != null)
+		{
+			System.out.print("Fields: " + fields[0]);
+			for(int i = 1; i < fields.length; i++)
+			{
+				System.out.print(", " + fieldModifiers[i] + " " + fields[i]);
+			}
+			System.out.println();
+		}
+		System.out.println();
+	}
+
 	
 	public String[] getFields() {
 		return fields;
