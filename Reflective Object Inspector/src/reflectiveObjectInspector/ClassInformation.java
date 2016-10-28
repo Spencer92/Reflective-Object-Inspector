@@ -3,13 +3,12 @@ import java.lang.reflect.*;
 
 public class ClassInformation extends InformationFinder
 {
-	Class cl;
+	Class objectClass;
 	Object ob;
 	String[] interfaceNames;
 	
-	public ClassInformation(Class cl, Object ob)
+	public ClassInformation(Object ob)
 	{
-		setCl(cl);
 		setOb(ob);
 	}
 	
@@ -17,41 +16,42 @@ public class ClassInformation extends InformationFinder
 	public void getInformation() 
 	{
 
-		this.cl.getName();
+		this.objectClass.getName();
 	}
 
 	public String getClassName()
 	{
-		Class<?> objectClass = (Class<?>) this.ob;
+		objectClass = (Class<?>) this.ob;
 		return objectClass.getName();
 	}
 
-	public void getClassInterfaceName()
+	public Class<?>[] getClassInterfaces()
 	{
-		Class<?> objectClass = (Class<?>) this.ob;
+		objectClass = (Class<?>) this.ob;
 		System.out.println(objectClass.getInterfaces());
 		String[] interfaceNames = new String[objectClass.getInterfaces().length];
-		for(int i = 0; i < objectClass.getInterfaces().length; i++)
-		{
-			interfaceNames[i] = objectClass.getInterfaces()[i].getName();
-		}
+///		for(int i = 0; i < objectClass.getInterfaces().length; i++)
+//		{
+//			interfaceNames[i] = objectClass.getInterfaces()[i].getName();
+//		}
+		return objectClass.getInterfaces();
 	}
 	
 	
 	
-	public String getSuperclassName()
+	public Class<?> getSuperclass()
 	{
-		Class<?> objectClass = (Class<?>) this.ob;
-		return objectClass.getSuperclass().getName();
+		objectClass = (Class<?>) this.ob;
+		return objectClass.getSuperclass();
 	}
 	
 	public Class getCl()
 	{
-		return this.cl;
+		return this.objectClass;
 	}
 	private void setCl(Class cl)
 	{
-		this.cl = cl;
+		this.objectClass = cl;
 	}
 	
 	private Object getOb()
