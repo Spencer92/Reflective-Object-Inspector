@@ -1,5 +1,6 @@
 package reflectiveObjectInspector;
 
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 public class MethodInformation 
@@ -9,8 +10,11 @@ public class MethodInformation
 	private String returnType;
 	private String modifiers;
 	private String name;
-
+	private String[] fields = null;
 	
+
+
+
 	public void print()
 	{
 		System.out.println("Method name: " + name);
@@ -19,11 +23,12 @@ public class MethodInformation
 
 		if(exceptions != null)
 		{
-			System.out.println("Exceptions: " + exceptions[0]);
+			System.out.print("Exceptions: " + exceptions[0]);
 			for(int i = 1; i < exceptions.length; i++)
 			{
-				System.out.println(exceptions[i]);
+				System.out.println(", " + exceptions[i]);
 			}
+			System.out.println();
 		}
 		else
 		{
@@ -32,15 +37,25 @@ public class MethodInformation
 
 		if(parameters != null)
 		{
-			System.out.println("Parameters: " + parameters[0]);
+			System.out.print("Parameters: " + parameters[0]);
 			for(int i = 1; i < parameters.length; i++)
 			{
-				System.out.println(parameters[i]);
+				System.out.print(", " + parameters[i]);
 			}
+			System.out.println();
 		}
 		else
 		{
 			System.out.println("Parameters: none");
+		}
+		
+		if(fields != null)
+		{
+			System.out.print("Fields: " + fields[0]);
+			for(int i = 0; i < fields.length; i++)
+			{
+				System.out.print(", " + fields[i]);
+			}
 		}
 		System.out.println();
 	}
@@ -80,6 +95,30 @@ public class MethodInformation
 		}
 
 	}
+	
+	public String[] getFields() {
+		return fields;
+	}
+
+
+	public void setFields(Field[] fields) {
+		if(fields.length > 0)
+		{
+			this.fields = new String[fields.length];
+			for(int i = 0; i < fields.length; i++)
+			{
+				if(fields[i].isAccessible())
+				{
+					this.fields[i] = "Accessible " + fields[i].getName();
+				}
+				else
+				{
+					this.fields[i] = "inaccessible " + fields[i].getName();
+				}
+			}
+		}
+	}
+	
 	public String getReturnType() {
 		return returnType;
 	}
