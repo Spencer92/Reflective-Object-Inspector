@@ -42,6 +42,7 @@ public class Inspector
 		ClassInformation classInfo;
 		MethodInformation[] methodInfo = null;
 		ConstructorInformation[] constructorInfo = null;
+		FieldInformation[] fieldInfo = null;
 //		System.out.println(obj.getClass().getName() + "\n end");
 		
 		
@@ -59,6 +60,7 @@ public class Inspector
 			return;
 		}
 		printClassInfo(classInfo,obj);
+		printFieldInfo(fieldInfo,obj);
 		printMethodInfo(methodInfo,obj);
 		printConstructorInfo(constructorInfo,obj);
 		
@@ -79,6 +81,22 @@ public class Inspector
 	}
 	
 	
+	
+	
+	private void printFieldInfo(FieldInformation[] info, Object objectClass)
+	{
+		info = new FieldInformation[objectClass.getClass().getFields().length];
+		System.out.println(objectClass.getClass().getFields().length + " fields in this class");
+		for(int i = 0; i < objectClass.getClass().getFields().length; i++)
+		{
+			info[i] = new FieldInformation(objectClass,i);
+			info[i].printField();
+		}
+		
+	}
+	
+	
+	
 	/*
 	 * Class Name	:		printClassInfo
 	 * 
@@ -88,9 +106,9 @@ public class Inspector
 	 */		
 	
 	
-	private void printClassInfo(ClassInformation info, Object classObject)
+	private void printClassInfo(ClassInformation info, Object objectClass)
 	{
-		info.setFields(classObject.getClass().getFields());
+		info.setFields(objectClass.getClass().getFields());
 		System.out.println("\n---------------");
 		System.out.println(info.getClassName());
 		System.out.println("---------------");
