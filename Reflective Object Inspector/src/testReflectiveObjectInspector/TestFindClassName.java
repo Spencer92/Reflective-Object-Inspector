@@ -62,7 +62,6 @@ public class TestFindClassName
 		ClassInformation name = new ClassInformation(cl);
 		assertEquals("testReflectiveObjectInspector.TestClass1", name.getSuperclass().getName());
 //		name.setFields(classObject.getFields());
-		name.printFields();
 	}
 	
 	

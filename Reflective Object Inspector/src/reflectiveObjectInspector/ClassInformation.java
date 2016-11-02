@@ -6,9 +6,9 @@ public class ClassInformation
 {
 	Class objectClass;
 	Object ob;
-	String[] interfaceNames = null;
-	String[] fields = null;
-	String[] fieldModifiers = null;
+	Class<?>[] interfaceNames = new Class<?>[0];
+	Class<?>[] relatedClasses = new Class<?>[0];
+
 	
 	public ClassInformation(Object ob)
 	{
@@ -24,26 +24,6 @@ public class ClassInformation
 	 * 
 	 */	
 	
-	public void setFields(Field[] fields) {
-		if(fields.length > 0)
-		{
-			this.fields = new String[fields.length];
-			this.fieldModifiers = new String[fields.length];
-			for(int i = 0; i < fields.length; i++)
-			{
-				if(fields[i].isAccessible())
-				{
-					this.fields[i] = "Accessible " + fields[i].getName();
-					this.fieldModifiers[i] = Integer.toString(fields[i].getModifiers());
-				}
-				else
-				{
-					this.fields[i] = "inaccessible " + fields[i].getName();
-					this.fieldModifiers[i] = Integer.toString(fields[i].getModifiers());
-				}
-			}
-		}
-	}
 	
 	/*
 	 * Class Name	:		printFields
@@ -53,36 +33,24 @@ public class ClassInformation
 	 * 
 	 */	
 	
-	public void printFields()
-	{
-		if(fields != null)
-		{
-			System.out.print("Fields: " + fields[0]);
-			for(int i = 1; i < fields.length; i++)
-			{
-				System.out.print(", " + fieldModifiers[i] + " " + fields[i]);
-			}
-			System.out.println();
-		}
-		System.out.println();
-	}
+
 	
 	
 	//getters and setters
 	
 	public String getClassName()
 	{
-		return this.ob.getClass().getName();
+		return this.ob.getClass().getName() + "this";
 	}
 
-	public String[] getClassInterfaces()
+	public Class<?>[] getClassInterfaces()
 	{
 		if(this.ob.getClass().getInterfaces().length > 0)
 		{
-			this.interfaceNames = new String[this.ob.getClass().getInterfaces().length];
+			this.interfaceNames = new Class<?>[this.ob.getClass().getInterfaces().length];
 			for(int i = 0; i < this.ob.getClass().getInterfaces().length; i++)
 			{
-				this.interfaceNames[i] = this.ob.getClass().getInterfaces()[i].getName();
+				this.interfaceNames[i] = this.ob.getClass().getInterfaces()[i];
 			}
 		}
 			
@@ -91,9 +59,18 @@ public class ClassInformation
 		return this.interfaceNames;
 	}
 	
-	
-	public String[] getFields() {
-		return fields;
+	public Class<?>[] getClasses()
+	{
+		if(this.ob.getClass().getClasses().length > 0)
+		{
+			this.relatedClasses = new Class<?>[this.ob.getClass().getClasses().length];
+			for(int i = 0; i < this.ob.getClass().getClasses().length; i++)
+			{
+				this.interfaceNames[i] = this.ob.getClass().getClasses()[i];
+			}
+			
+		}
+		return this.relatedClasses;
 	}
 
 	

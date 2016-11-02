@@ -51,9 +51,10 @@ public class Inspector
 			return;
 		}
 		classInfo = new ClassInformation(obj);
-		if(!saved.contains(obj.toString()))
+		String classType = obj.toString();
+		if(!saved.contains(classType))
 		{
-			saved.add(obj.toString());
+			saved.add(classType);
 		}
 		else
 		{
@@ -66,14 +67,14 @@ public class Inspector
 		
 		if(recursive)
 		{
-			inspect(obj.getClass().getSuperclass(),recursive);
-			for(int i = 0; i < obj.getClass().getInterfaces().length; i++)
+			inspect(classInfo.getSuperclass(),recursive);
+			for(int i = 0; i < classInfo.getClassInterfaces().length; i++)
 			{
-				inspect(obj.getClass().getInterfaces()[i],recursive);
+				inspect(classInfo.getClassInterfaces()[i],recursive);
 			}
-			for(int i = 0; i < obj.getClass().getClasses().length; i++)
+			for(int i = 0; i < classInfo.getClasses().length; i++)
 			{
-				inspect(obj.getClass().getClasses()[i],recursive);
+				inspect(classInfo.getClasses()[i],recursive);
 			}
 		}
 		
@@ -108,11 +109,9 @@ public class Inspector
 	
 	private void printClassInfo(ClassInformation info, Object objectClass)
 	{
-		info.setFields(objectClass.getClass().getFields());
 		System.out.println("\n---------------");
 		System.out.println(info.getClassName());
 		System.out.println("---------------");
-		info.printFields();
 		
 	}
 	
