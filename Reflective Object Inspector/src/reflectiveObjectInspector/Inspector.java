@@ -140,9 +140,9 @@ public class Inspector
 		System.out.println(objectClass.getConstructors().length + " constructors in this class\n");
 		for(int i = 0; i < objectClass.getConstructors().length; i++)
 		{
-			info[i] = new ConstructorInformation();
-			info[i].setModifiers(objectClass.getConstructors()[i].getModifiers());
-			info[i].setName(objectClass.getConstructors()[i]);
+//			info[i] = new ConstructorInformation();
+//			info[i].setModifiers(objectClass.getConstructors()[i].getModifiers());
+//			info[i].setName(objectClass.getConstructors()[i]);
 //			info[i].setParameterTypes(objectClass.getConstructors()[i].getParameterTypes());
 			info[i].print();
 		}

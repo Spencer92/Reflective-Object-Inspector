@@ -44,10 +44,10 @@ public class TestConstructorInformation
 		
 		for(int i = 0; i < info.length; i++)
 		{
-			info[i] = new ConstructorInformation();
-			info[i].setModifiers(classObject);
-			info[i].setName(classObject);
-			info[i].setParameterTypes(classObject,i);
+			info[i] = new ConstructorInformation(classObject,i);
+			info[i].setModifiers();
+			info[i].setName();
+			info[i].setParameterTypes();
 			info[i].print();
 		}
 
@@ -59,18 +59,18 @@ public class TestConstructorInformation
 	@Test
 	public void testTestConstructor2() throws ClassNotFoundException
 	{
-		Class<?> classObject = Class.forName("testReflectiveObjectInspector.TestConstructor2");
-		ConstructorInformation[] info = new ConstructorInformation[classObject.getConstructors().length];
-		for(int i = 0; i < classObject.getConstructors().length; i++)
+		TestConstructor2 classObject = new TestConstructor2(0,"Test",false);
+		ConstructorInformation[] info = new ConstructorInformation[classObject.getClass().getConstructors().length];
+		for(int i = 0; i < info.length; i++)
 		{
-			info[i] = new ConstructorInformation();
-			info[i].setModifiers(classObject.getConstructors()[i].getModifiers());
-			info[i].setName(classObject.getConstructors()[i]);
-//			info[i].setParameterTypes(classObject.getConstructors()[i].getParameterTypes());
+			info[i] = new ConstructorInformation(classObject,i);
+			info[i].setModifiers();
+			info[i].setName();
+			info[i].setParameterTypes();
 			info[i].print();
 		}
 		assertArrayEquals(new String[]{"int", "java.lang.String","boolean"}, info[0].getParameterTypes());
-		assertEquals("1",info[0].getModifiers());
+		assertEquals("0",info[0].getModifiers());
 		assertEquals("testReflectiveObjectInspector.TestConstructor2",info[0].getName());
 		
 		

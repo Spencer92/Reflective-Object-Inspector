@@ -5,8 +5,11 @@ import java.lang.reflect.Constructor;
 public class ConstructorInformation 
 {
 	private String[] parameterTypes = null;
-	private String modifiers;
+	private String modifierss;
 	private String name;
+	private String[] parameterValues = null;
+	private Object ob;
+	private int position;
 	
 
 	/*
@@ -17,6 +20,33 @@ public class ConstructorInformation
 	 * 
 	 */	
 	
+	public int getPosition() {
+		return position;
+	}
+
+
+	public void setPosition(int position) {
+		this.position = position;
+	}
+
+
+	public ConstructorInformation(Object ob, int position)
+	{
+		setOb(ob);
+		setPosition(position);
+	}
+	
+	
+	public Object getOb() {
+		return ob;
+	}
+
+
+	public void setOb(Object ob) {
+		this.ob = ob;
+	}
+
+
 	public void print()
 	{
 		System.out.println("Constructor name: " + name);
@@ -35,9 +65,8 @@ public class ConstructorInformation
 			System.out.println("Parameter Types: none");
 		}
 		
-		System.out.println("Modifiers: " + modifiers);
+		System.out.println("Modifiers: " + modifierss);
 	}
-	
 	
 	
 	
@@ -48,14 +77,14 @@ public class ConstructorInformation
 		return parameterTypes;
 	}
 	
-	public void setParameterTypes(Object parameterTypes, int position) {
+	public void setParameterTypes() {
 		
-		if(parameterTypes.getClass().getConstructors()[position].getParameterTypes().length > 0)
+		if(ob.getClass().getConstructors()[position].getParameterTypes().length > 0)
 		{
-			this.parameterTypes = new String[parameterTypes.getClass().getConstructors()[position].getParameterTypes().length];
-			for(int i = 0; i < parameterTypes.getClass().getConstructors()[position].getParameterTypes().length; i++)
+			this.parameterTypes = new String[ob.getClass().getConstructors()[position].getParameterTypes().length];
+			for(int i = 0; i < ob.getClass().getConstructors()[position].getParameterTypes().length; i++)
 			{
-				this.parameterTypes[i] = parameterTypes.getClass().getConstructors()[position].getParameterTypes()[i].getName();
+				this.parameterTypes[i] = ob.getClass().getConstructors()[position].getParameterTypes()[i].getName();
 			}
 		}
 	}
@@ -63,10 +92,10 @@ public class ConstructorInformation
 	
 	
 	public String getModifiers() {
-		return modifiers;
+		return modifierss;
 	}
-	public void setModifiers(Object modifiers) {
-		this.modifiers = Integer.toString(modifiers.getClass().getModifiers());
+	public void setModifiers() {
+		this.modifierss = Integer.toString(ob.getClass().getModifiers());
 	}
 	
 	public String getName()
@@ -74,8 +103,8 @@ public class ConstructorInformation
 		return this.name;
 	}
 	
-	public void setName(Object name)
+	public void setName()
 	{
-		this.name = name.getClass().getName();
+		this.name = ob.getClass().getName();
 	}
 }
