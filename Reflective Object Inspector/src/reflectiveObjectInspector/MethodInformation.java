@@ -10,6 +10,20 @@ public class MethodInformation
 	private String returnType;
 	private String modifiers;
 	private String name;
+	private Object ob;
+	private int position;
+
+
+
+	
+	
+	public MethodInformation(Object ob, int position)
+	{
+		setOb(ob);
+		setPosition(position);
+		
+	}
+	
 
 	
 	/*
@@ -20,9 +34,6 @@ public class MethodInformation
 	 * 						are displayed as well.
 	 * 
 	 */	
-
-	
-	
 
 	public void print()
 	{
@@ -65,14 +76,15 @@ public class MethodInformation
 	public String[] getExceptions() {
 		return exceptions;
 	}
-	public void setExceptions(Class<?>[] exceptions) 
+	public void setExceptions() 
 	{
-		if(exceptions.length > 0)
+		int exceptionsAmount;
+		if((exceptionsAmount = this.ob.getClass().getMethods()[position].getExceptionTypes().length) > 0)
 		{
-			this.exceptions = new String[exceptions.length];
-			for(int i = 0; i < exceptions.length; i++)
+			this.exceptions = new String[exceptionsAmount];
+			for(int i = 0; i < exceptionsAmount; i++)
 			{
-				this.exceptions[i] = exceptions[i].getName();
+				this.exceptions[i] = this.ob.getClass().getMethods()[position].getExceptionTypes()[i].getName();
 			}
 
 		}
@@ -82,64 +94,62 @@ public class MethodInformation
 	public String[] getParameters() {
 		return parameters;
 	}
-	public void setParameters(Class<?>[] parameters) {
+
+	public void setParameters() {
 		
-		if(parameters.length > 0)
+		int parametersAmount;
+		if((parametersAmount = this.ob.getClass().getMethods()[position].getParameterTypes().length) > 0)
 		{
-			this.parameters = new String[parameters.length];
-			for(int i = 0; i < parameters.length; i++)
+			this.parameters = new String[parametersAmount];
+			for(int i = 0; i < parametersAmount; i++)
 			{
-				this.parameters[i] = 
-						parameters[i].getName();
+				this.parameters[i] = this.ob.getClass().getMethods()[position].getParameterTypes()[i].getName();
 			}
 			
 		}
 
 	}
 	
-/*	public String[] getFields() {
-		return fields;
+	
+	
+	public int getPosition() {
+		return position;
 	}
 
 
-	public void setFields(Field[] fields) {
-		if(fields.length > 0)
-		{
-			this.fields = new String[fields.length];
-			this.fieldModifiers = new String[fields.length];
-			for(int i = 0; i < fields.length; i++)
-			{
-				if(fields[i].isAccessible())
-				{
-					this.fields[i] = "Accessible " + fields[i].getName();
-					this.fieldModifiers[i] = Integer.toString(fields[i].getModifiers());
-				}
-				else
-				{
-					this.fields[i] = "inaccessible " + fields[i].getName();
-					this.fieldModifiers[i] = Integer.toString(fields[i].getModifiers());
-				}
-			}
-		}
+	public void setPosition(int position) {
+		this.position = position;
 	}
-*/	
+
+
+	public Object getOb() {
+		return ob;
+	}
+
+
+	public void setOb(Object ob) {
+		this.ob = ob;
+	}
+
+	
+	
 	public String getReturnType() {
 		return returnType;
 	}
-	public void setReturnType(Class<?> returnType) {
-		this.returnType = returnType.getName();
+	public void setReturnType() {
+		this.returnType = this.ob.getClass().getMethods()[position].getReturnType().getName();
 	}
 	public String getModifiers() {
 		return modifiers;
 	}
-	public void setModifiers(int modifiers) {
-		this.modifiers = Integer.toString(modifiers);
+	public void setModifiers() {
+		this.modifiers = Integer.toString(this.ob.getClass().getMethods()[position].getModifiers());
 	}
 	public String getName() {
 		return name;
 	}
-	public void setName(Class<?> objectClass, int position) {
-		this.name = objectClass.getMethods()[position].getName();
+	public void setName() {
+		this.name = this.ob.getClass().getMethods()[position].getName();
 	}
 	
 	

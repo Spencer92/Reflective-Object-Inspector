@@ -6,7 +6,7 @@ public class ClassInformation
 {
 	Class objectClass;
 	Object ob;
-	String[] interfaceNames;
+	String[] interfaceNames = null;
 	String[] fields = null;
 	String[] fieldModifiers = null;
 	
@@ -75,9 +75,20 @@ public class ClassInformation
 		return this.ob.getClass().getName();
 	}
 
-	public Class<?>[] getClassInterfaces()
+	public String[] getClassInterfaces()
 	{
-		return this.ob.getClass().getInterfaces();
+		if(this.ob.getClass().getInterfaces().length > 0)
+		{
+			this.interfaceNames = new String[this.ob.getClass().getInterfaces().length];
+			for(int i = 0; i < this.ob.getClass().getInterfaces().length; i++)
+			{
+				this.interfaceNames[i] = this.ob.getClass().getInterfaces()[i].getName();
+			}
+		}
+			
+		
+		
+		return this.interfaceNames;
 	}
 	
 	

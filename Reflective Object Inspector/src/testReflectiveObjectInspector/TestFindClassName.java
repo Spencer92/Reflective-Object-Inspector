@@ -42,30 +42,26 @@ public class TestFindClassName
 	@Test
 	public void testTestClass1() throws ReflectiveOperationException
 	{
-		Class cl = Class.forName("testReflectiveObjectInspector.TestClass1");
-		Object ob = Class.forName("testReflectiveObjectInspector.TestClass1");
-		ClassInformation name = new ClassInformation(ob);
+		TestClass1 cl = new TestClass1();
+		ClassInformation name = new ClassInformation(cl);
 		assertEquals("testReflectiveObjectInspector.TestClass1",name.getClassName());
 	}
 	
 	@Test
 	public void testTestClass2() throws ReflectiveOperationException
 	{
-		Class cl = Class.forName("testReflectiveObjectInspector.TestClass2");
-		Object ob = Class.forName("testReflectiveObjectInspector.TestClass2");
-		ClassInformation name = new ClassInformation(ob);
-//		assertArrayEquals(new String[]{"asst2_test_driver.InterfaceA"},name.getClassInterfaceName());
+		TestClass2 cl = new TestClass2();
+		ClassInformation name = new ClassInformation(cl);
+		assertArrayEquals(new String[]{"asst2_test_driver.InterfaceA"},name.getClassInterfaces());
 	}
 	
 	@Test
 	public void testTestClass3() throws ReflectiveOperationException
 	{
-		Class cl = Class.forName("testReflectiveObjectInspector.TestClass3");
-		Object ob = Class.forName("testReflectiveObjectInspector.TestClass3");
-		ClassInformation name = new ClassInformation(ob);
-		Class<?> classObject = (Class<?>) ob;
+		TestClass3 cl = new TestClass3();
+		ClassInformation name = new ClassInformation(cl);
 		assertEquals("testReflectiveObjectInspector.TestClass1", name.getSuperclass().getName());
-		name.setFields(classObject.getFields());
+//		name.setFields(classObject.getFields());
 		name.printFields();
 	}
 	

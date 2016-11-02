@@ -45,35 +45,33 @@ public class Inspector
 //		System.out.println(obj.getClass().getName() + "\n end");
 		
 		
-		
-		objectClass = (Class<?>) obj;
-		if(objectClass == null)
+		if(obj == null)
 		{
 			return;
 		}
 		classInfo = new ClassInformation(obj);
-		if(!saved.contains(objectClass.toString()))
+		if(!saved.contains(obj.toString()))
 		{
-			saved.add(objectClass.toString());
+			saved.add(obj.toString());
 		}
 		else
 		{
 			return;
 		}
-		printClassInfo(classInfo,objectClass);
-		printMethodInfo(methodInfo,objectClass);
-		printConstructorInfo(constructorInfo,objectClass);
+		printClassInfo(classInfo,obj);
+		printMethodInfo(methodInfo,obj);
+		printConstructorInfo(constructorInfo,obj);
 		
 		if(recursive)
 		{
-			inspect(objectClass.getSuperclass(),recursive);
-			for(int i = 0; i < objectClass.getInterfaces().length; i++)
+			inspect(obj.getClass().getSuperclass(),recursive);
+			for(int i = 0; i < obj.getClass().getInterfaces().length; i++)
 			{
-				inspect(objectClass.getInterfaces()[i],recursive);
+				inspect(obj.getClass().getInterfaces()[i],recursive);
 			}
-			for(int i = 0; i < objectClass.getClasses().length; i++)
+			for(int i = 0; i < obj.getClass().getClasses().length; i++)
 			{
-				inspect(objectClass.getClasses()[i],recursive);
+				inspect(obj.getClass().getClasses()[i],recursive);
 			}
 		}
 		
@@ -90,9 +88,9 @@ public class Inspector
 	 */		
 	
 	
-	private void printClassInfo(ClassInformation info, Class<?> classObject)
+	private void printClassInfo(ClassInformation info, Object classObject)
 	{
-		info.setFields(classObject.getFields());
+		info.setFields(classObject.getClass().getFields());
 		System.out.println("\n---------------");
 		System.out.println(info.getClassName());
 		System.out.println("---------------");
@@ -109,18 +107,18 @@ public class Inspector
 	 */	
 	
 	
-	private void printMethodInfo(MethodInformation[] info, Class<?> objectClass)
+	private void printMethodInfo(MethodInformation[] info, Object objectClass)
 	{
-		info = new MethodInformation[objectClass.getMethods().length];
-		System.out.println(objectClass.getMethods().length + " methods in this class\n");
-		for(int i = 0; i < objectClass.getMethods().length; i++)
+		info = new MethodInformation[objectClass.getClass().getMethods().length];
+		System.out.println(objectClass.getClass().getMethods().length + " methods in this class\n");
+		for(int i = 0; i < objectClass.getClass().getMethods().length; i++)
 		{
-			info[i] = new MethodInformation();
-			info[i].setName(objectClass,i);
-			info[i].setExceptions(objectClass.getMethods()[i].getExceptionTypes());
-			info[i].setParameters(objectClass.getMethods()[i].getParameterTypes());
-			info[i].setModifiers(objectClass.getModifiers());
-			info[i].setReturnType(objectClass.getMethods()[i].getReturnType());
+			info[i] = new MethodInformation(objectClass, i);
+			info[i].setName();
+			info[i].setExceptions();
+			info[i].setParameters();
+			info[i].setModifiers();
+			info[i].setReturnType();
 			info[i].print();
 		}
 	}
@@ -134,16 +132,16 @@ public class Inspector
 	 * 
 	 */		
 	
-	private void printConstructorInfo(ConstructorInformation[] info, Class<?> objectClass)
+	private void printConstructorInfo(ConstructorInformation[] info, Object objectClass)
 	{
-		info = new ConstructorInformation[objectClass.getConstructors().length];
-		System.out.println(objectClass.getConstructors().length + " constructors in this class\n");
-		for(int i = 0; i < objectClass.getConstructors().length; i++)
+		info = new ConstructorInformation[objectClass.getClass().getConstructors().length];
+		System.out.println(objectClass.getClass().getConstructors().length + " constructors in this class\n");
+		for(int i = 0; i < objectClass.getClass().getConstructors().length; i++)
 		{
-//			info[i] = new ConstructorInformation();
-//			info[i].setModifiers(objectClass.getConstructors()[i].getModifiers());
-//			info[i].setName(objectClass.getConstructors()[i]);
-//			info[i].setParameterTypes(objectClass.getConstructors()[i].getParameterTypes());
+			info[i] = new ConstructorInformation(objectClass, i);
+			info[i].setModifiers();
+			info[i].setName();
+			info[i].setParameterTypes();
 			info[i].print();
 		}
 	}

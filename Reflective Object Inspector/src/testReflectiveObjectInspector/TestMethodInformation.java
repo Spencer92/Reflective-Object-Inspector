@@ -60,21 +60,17 @@ public class TestMethodInformation
 	@Test
 	public void testTestMethod1() throws ClassNotFoundException
 	{
-		Class<?> objectClass = Class.forName("testReflectiveObjectInspector.TestMethod1");
-		MethodInformation[] info = new MethodInformation[objectClass.getMethods().length];
-		for(int i = 0; i < objectClass.getMethods().length; i++)
-		{
-			System.out.println(objectClass.getMethods()[i].getName());
-		}
+		TestMethod2 objectClass = new TestMethod2();
+		MethodInformation[] info = new MethodInformation[objectClass.getClass().getMethods().length];
 
-		for(int i = 0; i < objectClass.getMethods().length; i++)
+		for(int i = 0; i < objectClass.getClass().getMethods().length; i++)
 		{
-			info[i] = new MethodInformation();
-			info[i].setName(objectClass,i);
-			info[i].setExceptions(objectClass.getMethods()[i].getExceptionTypes());
-			info[i].setParameters(objectClass.getMethods()[i].getParameterTypes());
-			info[i].setModifiers(objectClass.getModifiers());
-			info[i].setReturnType(objectClass.getMethods()[i].getReturnType());
+			info[i] = new MethodInformation(objectClass,i);
+			info[i].setName();
+			info[i].setExceptions();
+			info[i].setParameters();
+			info[i].setModifiers();
+			info[i].setReturnType();
 			info[i].print();
 		}
 		
