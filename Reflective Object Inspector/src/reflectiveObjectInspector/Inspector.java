@@ -42,7 +42,7 @@ public class Inspector
 		ClassInformation classInfo;
 		MethodInformation[] methodInfo = null;
 		ConstructorInformation[] constructorInfo = null;
-		FieldInformation[] fieldInfo = null;
+		FieldInformation fieldInfo = null;
 //		System.out.println(obj.getClass().getName() + "\n end");
 		
 		
@@ -84,16 +84,11 @@ public class Inspector
 	
 	
 	
-	private void printFieldInfo(FieldInformation[] info, Object objectClass)
+	private void printFieldInfo(FieldInformation info, Object objectClass)
 	{
-		info = new FieldInformation[objectClass.getClass().getFields().length];
 		System.out.println(objectClass.getClass().getFields().length + " fields in this class");
-		for(int i = 0; i < objectClass.getClass().getFields().length; i++)
-		{
-			info[i] = new FieldInformation(objectClass,i);
-			info[i].printField();
-		}
-		
+			info = new FieldInformation(objectClass);
+			info.printField();
 	}
 	
 	
