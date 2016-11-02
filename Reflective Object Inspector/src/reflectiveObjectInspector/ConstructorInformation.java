@@ -47,14 +47,15 @@ public class ConstructorInformation
 	public String[] getParameterTypes() {
 		return parameterTypes;
 	}
-	public void setParameterTypes(Class<?>[] parameterTypes) {
+	
+	public void setParameterTypes(Object parameterTypes, int position) {
 		
-		if(parameterTypes.length > 0)
+		if(parameterTypes.getClass().getConstructors()[position].getParameterTypes().length > 0)
 		{
-			this.parameterTypes = new String[parameterTypes.length];
-			for(int i = 0; i < parameterTypes.length; i++)
+			this.parameterTypes = new String[parameterTypes.getClass().getConstructors()[position].getParameterTypes().length];
+			for(int i = 0; i < parameterTypes.getClass().getConstructors()[position].getParameterTypes().length; i++)
 			{
-				this.parameterTypes[i] = parameterTypes[i].getName();
+				this.parameterTypes[i] = parameterTypes.getClass().getConstructors()[position].getParameterTypes()[i].getName();
 			}
 		}
 	}
@@ -64,8 +65,8 @@ public class ConstructorInformation
 	public String getModifiers() {
 		return modifiers;
 	}
-	public void setModifiers(int modifiers) {
-		this.modifiers = Integer.toString(modifiers);
+	public void setModifiers(Object modifiers) {
+		this.modifiers = Integer.toString(modifiers.getClass().getModifiers());
 	}
 	
 	public String getName()
@@ -73,8 +74,8 @@ public class ConstructorInformation
 		return this.name;
 	}
 	
-	public void setName(Constructor<?> name)
+	public void setName(Object name)
 	{
-		this.name = name.getName();
+		this.name = name.getClass().getName();
 	}
 }

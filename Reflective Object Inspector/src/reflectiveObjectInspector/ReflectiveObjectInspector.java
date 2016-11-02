@@ -5,12 +5,15 @@ import asst2_test_driver.*;
 
 public class ReflectiveObjectInspector 
 {
-	public static void main(String [] args) throws ClassNotFoundException, NoSuchMethodException, SecurityException
+	public static void main(String [] args) throws Exception
 	{
-		Object object1 = Class.forName("asst2_test_driver.ClassA");
-		Object object2 = Class.forName("asst2_test_driver.ClassB");
-		Object object3 = Class.forName("asst2_test_driver.ClassC");
-		Object object4 = Class.forName("asst2_test_driver.ClassD");
+		ClassA object1 = new ClassA();
+		ClassB object2 = new ClassB();
+		ClassC object3 = new ClassB();
+		ClassD object4 = new ClassD();
+		
+		System.out.println(object1.getClass().getName());
+		
 		Inspector inspector = new Inspector();
 		
 		inspector.inspect(object1, true);

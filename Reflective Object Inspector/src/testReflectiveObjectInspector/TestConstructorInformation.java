@@ -25,6 +25,7 @@ class TestConstructor2 extends TestConstructor1
 		super(i, j, k);
 		// TODO Auto-generated constructor stub
 	}
+
 	
 }
 
@@ -35,19 +36,23 @@ public class TestConstructorInformation
 	@Test
 	public void testTestConstructor1() throws ClassNotFoundException
 	{
-		Class<?> classObject = Class.forName("testReflectiveObjectInspector.TestConstructor1");
-		ConstructorInformation[] info = new ConstructorInformation[classObject.getConstructors().length];
-		for(int i = 0; i < classObject.getConstructors().length; i++)
+		TestConstructor1 classObject = new TestConstructor1(0, "Test", false);
+		
+		
+		ConstructorInformation[] info = new ConstructorInformation[classObject.getClass().getConstructors().length];
+		
+		
+		for(int i = 0; i < info.length; i++)
 		{
 			info[i] = new ConstructorInformation();
-			info[i].setModifiers(classObject.getConstructors()[i].getModifiers());
-			info[i].setName(classObject.getConstructors()[i]);
-			info[i].setParameterTypes(classObject.getConstructors()[i].getParameterTypes());
+			info[i].setModifiers(classObject);
+			info[i].setName(classObject);
+			info[i].setParameterTypes(classObject,i);
 			info[i].print();
 		}
 
 		assertArrayEquals(new String[]{"int", "java.lang.String","boolean"}, info[0].getParameterTypes());
-		assertEquals("1",info[0].getModifiers());
+		assertEquals("0",info[0].getModifiers());
 		assertEquals("testReflectiveObjectInspector.TestConstructor1",info[0].getName());
 	}
 	
@@ -61,7 +66,7 @@ public class TestConstructorInformation
 			info[i] = new ConstructorInformation();
 			info[i].setModifiers(classObject.getConstructors()[i].getModifiers());
 			info[i].setName(classObject.getConstructors()[i]);
-			info[i].setParameterTypes(classObject.getConstructors()[i].getParameterTypes());
+//			info[i].setParameterTypes(classObject.getConstructors()[i].getParameterTypes());
 			info[i].print();
 		}
 		assertArrayEquals(new String[]{"int", "java.lang.String","boolean"}, info[0].getParameterTypes());

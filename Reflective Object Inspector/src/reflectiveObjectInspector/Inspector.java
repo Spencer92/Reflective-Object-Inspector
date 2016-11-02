@@ -42,6 +42,9 @@ public class Inspector
 		ClassInformation classInfo;
 		MethodInformation[] methodInfo = null;
 		ConstructorInformation[] constructorInfo = null;
+//		System.out.println(obj.getClass().getName() + "\n end");
+		
+		
 		
 		objectClass = (Class<?>) obj;
 		if(objectClass == null)
@@ -140,7 +143,7 @@ public class Inspector
 			info[i] = new ConstructorInformation();
 			info[i].setModifiers(objectClass.getConstructors()[i].getModifiers());
 			info[i].setName(objectClass.getConstructors()[i]);
-			info[i].setParameterTypes(objectClass.getConstructors()[i].getParameterTypes());
+//			info[i].setParameterTypes(objectClass.getConstructors()[i].getParameterTypes());
 			info[i].print();
 		}
 	}
