@@ -72,14 +72,12 @@ public class ClassInformation
 	
 	public String getClassName()
 	{
-		objectClass = (Class<?>) this.ob;
-		return objectClass.getName();
+		return this.ob.getClass().getName();
 	}
 
 	public Class<?>[] getClassInterfaces()
 	{
-		objectClass = (Class<?>) this.ob;
-		return objectClass.getInterfaces();
+		return this.ob.getClass().getInterfaces();
 	}
 	
 	
@@ -90,8 +88,7 @@ public class ClassInformation
 	
 	public Class<?> getSuperclass()
 	{
-		objectClass = (Class<?>) this.ob;
-		return objectClass.getSuperclass();
+		return this.ob.getClass().getSuperclass();
 	}
 	
 	public Class getCl()
