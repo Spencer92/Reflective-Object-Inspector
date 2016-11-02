@@ -13,6 +13,14 @@ public class FieldInformation
 		setOb(ob);
 	}
 
+	/*
+	 * Class Name	:		setField
+	 * 
+	 * Purpose   	:		Takes any public fields, and converts the name to a string
+	 * 						to be displayed
+	 * 
+	 * 
+	 */	
 	
 	
 	public void setField() {
@@ -20,6 +28,14 @@ public class FieldInformation
 		this.fields = Arrays.toString(this.ob.getClass().getFields());
 	}
 	
+	
+	/*
+	 * Class Name	:		printField
+	 * 
+	 * Purpose   	:		Prints the field and the number of modifiers associated with it.
+	 * 
+	 * 
+	 */	
 	
 	public void printField()
 	{

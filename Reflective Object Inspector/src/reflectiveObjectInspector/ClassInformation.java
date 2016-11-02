@@ -15,23 +15,9 @@ public class ClassInformation
 		setOb(ob);
 	}
 
-	/*
-	 * Class Name	:		setFields
-	 * 
-	 * Purpose   	:		Takes any public fields, and converts the name to a string
-	 * 						to be displayed
-	 * 
-	 * 
-	 */	
+
 	
-	
-	/*
-	 * Class Name	:		printFields
-	 * 
-	 * Purpose   	:		Prints the field and the number of modifiers associated with it.
-	 * 
-	 * 
-	 */	
+
 	
 
 	

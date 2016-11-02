@@ -43,7 +43,6 @@ public class Inspector
 		MethodInformation[] methodInfo = null;
 		ConstructorInformation[] constructorInfo = null;
 		FieldInformation fieldInfo = null;
-//		System.out.println(obj.getClass().getName() + "\n end");
 		
 		
 		if(obj == null)
